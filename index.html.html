@@ -39,6 +39,21 @@
             background-color: #dc3545;
             color: white;
         }
+        .result {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .result img {
+            width: 200px;
+            border-radius: 10px;
+        }
+        .result p {
+            font-size: 24px;
+            color: #d6336c;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -48,13 +63,21 @@
         <button class="no" onclick="decline()">nie</button>
     </div>
 
+    <div class="result" id="result">
+        <img src="1.jpg" alt="Kot z różą">
+        <p>Wiedziałem, że się zgodzisz, Kochaam Cię! ❤️</p>
+    </div>
+
     <script>
         let noClickCount = 0;
         const yesButton = document.querySelector('.yes');
         const noButton = document.querySelector('.no');
+        const resultDiv = document.getElementById('result');
 
         function accept() {
-            alert('Wiedziałem, że się zgodzisz, Kochaam Cię! ❤️');
+            document.querySelector('.buttons').style.display = 'none';
+            document.querySelector('h1').style.display = 'none';
+            resultDiv.style.display = 'flex';
         }
 
         function decline() {
@@ -72,7 +95,7 @@
             } else if (noClickCount === 5) {
                 noButton.textContent = "No weeeź";
             } else if (noClickCount >= 6) {
-                yesButton.style.fontSize = '300px';
+                yesButton.style.fontSize = '100px';
                 noButton.style.display = 'none';
             }
         }
